@@ -35,7 +35,7 @@ Fix the responsiveness for smaller viewing devices. At the moment, the lower 3 c
 
 Additional section that includes top salary ranking in states. Additional input field for job type (finance, IT, Government etc.).
 
-Clever performance optimization (not desired for my use, but still cool when I thought about it at scale) would be instead of adding new mongoDB database documents everytime someone submits, have premade database documents for all 50 states + 1 national object. Each state document would have the current running average, as well as the number of submissions for that state to display. This is basic math at this point for calculating new averages to display and would scale phenomenally. Current implentation to find average requires filtering all corresponding state documents, then loading array of wages submitted, summing, and dividing by length. With a large database this may get slow. National database document would be similar just for all submissions.
+Clever performance optimization (not desired for my use, but still cool when I thought about it at scale) would be instead of adding new mongoDB database documents everytime someone submits, have premade database documents for all 50 states + 1 national object. Each state document would have the current running average, as well as the number of submissions for that state to display. This is basic math at this point for calculating new averages to display and would scale phenomenally. Current implentation to find average requires filtering all corresponding state documents, then loading array of wages submitted, summing, and dividing by length. National database document would be similar just for all submissions. With a large database this may get slow. 
 
 ## Lessons Learned:
 
