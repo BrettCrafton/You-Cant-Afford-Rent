@@ -13,16 +13,16 @@ Live Project at: <a href="https://youcantaffordrent.com" target="_blank" rel="no
 Utilized the API I created from scratch, specifically for this project, hosted at https://bc-states-api.herokuapp.com/.  
 **Update** - due to Heroku discontinuing their free tier, the json data obtained from the API is now built into the app. This was an easy conversion seeing how I build the API.
 
-"The Facts"
+**"The Facts"**  
 Built map with https://simplemaps.com/. Some basic data I built into the map and presents on hover. Clicking on map, initiates data inserted into the "The Facts" list. This function is also able to be initiated from the selector input under "The Facts" section. 
 
-"Compare Your Wage"
+**"Compare Your Wage"**  
 Form input in this section on submission do 2 things. 1. Send the data via post method to MongoDB database for storage and usage within the "How You Stack Up" section. 2. Store the data in local storage for callback on revisit of the site and use within this section.
 Data is then used to compare against minimum wage and other relevent info of the submitted state.
 
 Inputs in this section keep a 1 input per user rule via local storage checks. If data is already stored in local storage on additional submissions, then database data gets deleted, and new info posted to database. Also on load of page, if local storage contains previous submissions, then data will autoload from local storage info.
 
-"How You Stack Up"
+**"How You Stack Up"**  
 In this section, all user submitted data from the MongoDB database is used. Info is loaded on wage submission of the form in "Compare Your Wage". Using get methods from MongoDB, all data is used in the National facts section and only the submitted state data is used in the state section.
 
 ## Optimizations / Add-Ons:
