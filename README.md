@@ -11,7 +11,7 @@ Live Project at: <a href="https://youcantaffordrent.com" target="_blank" rel="no
 **Tech used:** EJS, CSS, JavaScript, Node.js (w/ Express), MongoDB
 
 Utilized the API I created from scratch, specifically for this project, hosted at https://bc-states-api.herokuapp.com/.  
-Update - due to Heroku discontinuing their free tier, the json data obtained from the API is now built into the app. This was an easy conversion seeing how I build the API.
+**Update** - due to Heroku discontinuing their free tier, the json data obtained from the API is now built into the app. This was an easy conversion seeing how I build the API.
 
 "The Facts"
 Built map with https://simplemaps.com/. Some basic data I built into the map and presents on hover. Clicking on map, initiates data inserted into the "The Facts" list. This function is also able to be initiated from the selector input under "The Facts" section. 
