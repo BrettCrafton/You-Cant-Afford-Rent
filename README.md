@@ -25,7 +25,7 @@ Inputs in this section keep a 1 input per user rule via local storage checks. If
 "How You Stack Up"
 In this section, all user submitted data from the MongoDB database is used. Info is loaded on wage submission of the form in "Compare Your Wage". Using get methods from MongoDB, all data is used in the National facts section and only the submitted state data is used in the state section.
 
-## Optimizations:
+## Optimizations / Add-Ons:
 
 The way it currently is, people can submit multiple times on different devies, or by clearing local storage on their device. Utilizing some type of authentication to stop this behavior would be useful. 
 
@@ -35,7 +35,7 @@ Fix the responsiveness for smaller viewing devices. At the moment, the lower 3 c
 
 Additional section that includes top salary ranking in states. Additional input field for job type (finance, IT, Government etc.).
 
-Clever performance optimization (not desired for my use, but still cool when I thought about it at scale) would be instead of adding new mongoDB database documents everytime someone submits, have premade database documents for all 50 states + 1 national object. Each state document would have the current running average, as well as the number of submissions for that state to display. This is basic math at this point for calculating new averages to display and would scale phenomenally. Current implentation to find average requires filtering all corresponding state documents, then loading array of wages submitted, summing, and dividing by length. National database document would be similar just for all submissions. With a large database this may get slow. 
+Clever performance optimization (not desired for my current use, but still cool when I thought about it at scale) would be instead of adding new mongoDB database documents everytime someone submits, have premade database documents for all 50 states + 1 national object. Each state document would have the current running average, as well as the number of submissions for that state to display. This is basic math at this point for calculating new averages to display and would scale phenomenally. Current implementation to find average requires filtering all corresponding state documents, then loading array of wages submitted, summing, and dividing by length. National database document would be similar just for all submissions. With a large database this may get slow. 
 
 ## Lessons Learned:
 
