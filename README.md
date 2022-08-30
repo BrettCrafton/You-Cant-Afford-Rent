@@ -4,7 +4,7 @@ An interactive map / Factoid / CRUD database that displays housing / rent / wage
 
 Live Project at: <a href="https://youcantaffordrent.com" target="_blank" rel="noreferrer"> https://youcantaffordrent.com </a>
 
-<a href="https://youcantaffordrent.com" target="_blank" rel="noreferrer"> <img src="https://github.com/BrettCrafton/BrettCrafton/blob/main/assets/Harry%20Potter%20gif.gif?raw=true" alt="project example"/> </a>
+<a href="https://youcantaffordrent.com" target="_blank" rel="noreferrer"> <img src="#" alt="project example"/> </a>
 
 ## How It's Made:
 
