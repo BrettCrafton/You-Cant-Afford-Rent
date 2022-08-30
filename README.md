@@ -45,6 +45,8 @@ Basic local storage usage in new clever ways, as well as refined API creation te
 
 Relearned apending new child elements to lists while creating the factoid lists (this went unused, but is setup for future additions).
 
+That I should stop forgetting to restart my node server after making backend changes.
+
 ## APP Use:
 
 This is pretty straight forward on the site design. Hover on map to get basic info. Click state on map or use state selector in "The Facts" section to get facts about that state.
