@@ -8,7 +8,7 @@ Live Project at: <a href="https://youcantaffordrent.com" target="_blank" rel="no
 
 ## How It's Made:
 
-**Tech used:** HTML, CSS, JavaScript, Node.js (w/ Express), MongoDB
+**Tech used:** EJS, CSS, JavaScript, Node.js (w/ Express), MongoDB
 
 Utilized the API I created from scratch, specifically for this project, hosted at https://bc-states-api.herokuapp.com/.
 Update - due to Heroku discontinuing their free tier, the json data obtained from the API is built into the app. This was an easy conversion seeing how I build the API.
