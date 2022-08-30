@@ -1,0 +1,206 @@
+<!-- index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>You Can't Afford Rent</title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  
+
+  <body>
+<!-- Top -->
+    <h1 data-position="header">You Can't Afford Rent (.com)</h1>
+
+<!-- Middle -->
+    <section data-position="map">
+      <div  id="map"></div>
+    </section>
+
+<!--Bottom Left -->
+    <section data-position="facts">
+      <div>
+        <h2>The Facts</h2>
+        <div class="center">
+        <span>Click Map or Select ->&nbsp</span>
+        <form id="stateInput">
+            <select id="stateSelector">
+              <option selected disabled hidden>--State--</option>
+              <option value="AL">Alabama</option>
+              <option value="AK">Alaska</option>
+              <option value="AZ">Arizona</option>
+              <option value="AR">Arkansas</option>
+              <option value="CA">California</option>
+              <option value="CO">Colorado</option>
+              <option value="CT">Connecticut</option>
+              <option value="DE">Delaware</option>
+              <option value="FL">Florida</option>
+              <option value="GA">Georgia</option>
+              <option value="HI">Hawaii</option>
+              <option value="ID">Idaho</option>
+              <option value="IL">Illinois</option>
+              <option value="IN">Indiana</option>
+              <option value="IA">Iowa</option>
+              <option value="KS">Kansas</option>
+              <option value="KY">Kentucky</option>
+              <option value="LA">Louisiana</option>
+              <option value="ME">Maine</option>
+              <option value="MD">Maryland</option>
+              <option value="MA">Massachusetts</option>
+              <option value="MI">Michigan</option>
+              <option value="MN">Minnesota</option>
+              <option value="MS">Mississippi</option>
+              <option value="MO">Missouri</option>
+              <option value="MT">Montana</option>
+              <option value="NE">Nebraska</option>
+              <option value="NV">Nevada</option>
+              <option value="NH">New Hampshire</option>
+              <option value="NJ">New Jersey</option>
+              <option value="NM">New Mexico</option>
+              <option value="NY">New York</option>
+              <option value="NC">North Carolina</option>
+              <option value="ND">North Dakota</option>
+              <option value="OH">Ohio</option>
+              <option value="OK">Oklahoma</option>
+              <option value="OR">Oregon</option>
+              <option value="PA">Pennsylvania</option>
+              <option value="RI">Rhode Island</option>
+              <option value="SC">South Carolina</option>
+              <option value="SD">South Dakota</option>
+              <option value="TN">Tennessee</option>
+              <option value="TX">Texas</option>
+              <option value="UT">Utah</option>
+              <option value="VT">Vermont</option>
+              <option value="VA">Virginia</option>
+              <option value="WA">Washington</option>
+              <option value="WV">West Virginia</option>
+              <option value="WI">Wisconsin</option>
+              <option value="WY">Wyoming</option>
+            </select>
+        </form>
+      </div>
+        <ol class="stateInfo gradient-list hidden" >
+          <h4 id="stateDetails"></h4>
+          <li id="minimumWage"></li>
+          <li id="house"></li>
+          <li id="houseHours"></li>
+          <li id="rent"></li>
+          <li id="rentHours"></li>
+          <li id="downPaymentHours"></li>
+          <li id="removeMe" class="hidden">Even if they managed to get a down payment, it is almost certain that they would not qualify for the mortage.</li>
+        </ol>
+      </div>
+    </section>
+<!-- Bottom Middle -->
+    <section data-position="compare">
+        <h2>Compare Your Wage</h2>
+
+        <div class="center">
+        <form action="/newWage" method="POST" id="newWagePost">
+          <span class="input-dollar left">
+            <input id="inputAmount" type="number" placeholder="Amount" name="amount" required />
+          </span>
+          <select id="selectedFreq" name="frequency" required>
+            <option value="" selected disabled hidden>--Frequency--</option>
+            <option value="yearly">Yearly</option>
+            <option value="monthly">Monthly</option>
+            <option value="weekly">Weekly</option>
+            <option value="hourly">Hourly</option>
+          </select>
+          <select id="selectedState" name="state" required>
+            <option value="" selected disabled hidden>--State--</option>
+            <option value="AL">Alabama</option>
+            <option value="AK">Alaska</option>
+            <option value="AZ">Arizona</option>
+            <option value="AR">Arkansas</option>
+            <option value="CA">California</option>
+            <option value="CO">Colorado</option>
+            <option value="CT">Connecticut</option>
+            <option value="DE">Delaware</option>
+            <option value="FL">Florida</option>
+            <option value="GA">Georgia</option>
+            <option value="HI">Hawaii</option>
+            <option value="ID">Idaho</option>
+            <option value="IL">Illinois</option>
+            <option value="IN">Indiana</option>
+            <option value="IA">Iowa</option>
+            <option value="KS">Kansas</option>
+            <option value="KY">Kentucky</option>
+            <option value="LA">Louisiana</option>
+            <option value="ME">Maine</option>
+            <option value="MD">Maryland</option>
+            <option value="MA">Massachusetts</option>
+            <option value="MI">Michigan</option>
+            <option value="MN">Minnesota</option>
+            <option value="MS">Mississippi</option>
+            <option value="MO">Missouri</option>
+            <option value="MT">Montana</option>
+            <option value="NE">Nebraska</option>
+            <option value="NV">Nevada</option>
+            <option value="NH">New Hampshire</option>
+            <option value="NJ">New Jersey</option>
+            <option value="NM">New Mexico</option>
+            <option value="NY">New York</option>
+            <option value="NC">North Carolina</option>
+            <option value="ND">North Dakota</option>
+            <option value="OH">Ohio</option>
+            <option value="OK">Oklahoma</option>
+            <option value="OR">Oregon</option>
+            <option value="PA">Pennsylvania</option>
+            <option value="RI">Rhode Island</option>
+            <option value="SC">South Carolina</option>
+            <option value="SD">South Dakota</option>
+            <option value="TN">Tennessee</option>
+            <option value="TX">Texas</option>
+            <option value="UT">Utah</option>
+            <option value="VT">Vermont</option>
+            <option value="VA">Virginia</option>
+            <option value="WA">Washington</option>
+            <option value="WV">West Virginia</option>
+            <option value="WI">Wisconsin</option>
+            <option value="WY">Wyoming</option>
+          </select>
+          <button id="formSubmitted" type="submit">Submit</button>
+        </form>
+      </div>
+        <ol class="wageInfo gradient-list hidden">
+          <h4 id="wageDetails"></h4>
+          <li id="wageConvertedFreq"></li>
+          <li id="minWageComparedSubmittedWage"></li>
+          <li id="yourHouseHours"></li>
+          <li id="fasterHours"></li>
+          <li id="yourRentHours"></li>
+          <li id="yourDownPaymentHours"></li>
+        </ol>
+      </section>
+<!-- Bottom Right -->
+      <section data-position="stack">
+        <h2>How You Stack Up</h2>
+
+        <ol class="stackUp gradient-list hidden">
+          <h4>By State</h4>
+        </ol>
+        <ol class="stackUp gradient-list hidden">
+          <h4>By Nation</h4>
+        </ol>
+      </section>
+<!-- Footer -->
+    <footer data-position="footer" id="footer">
+      <span id="disclaimer">*All data is based on public info from Zillow.com and the U.S. Government.</span>
+      <div class="links">       
+          <span>Website by: Brett Crafton</span>
+          <a class="icon fa-solid fa-globe" target="_blank" rel="noopener noreferrer" href="https://brettcrafton.com"></a>
+          <a class="icon fa-brands fa-twitter" target="_blank" rel="noopener noreferrer" href="https://twitter.com/BrettC_Dev"></a>
+          <a class="icon fa-brands fa-github" target="_blank" rel="noopener noreferrer" href="https://github.com/BrettCrafton"></a>
+          <a class="icon fa-brands fa-linkedin" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/brett-crafton-19b69912a/"></a>
+          <a class="icon fa-solid fa-envelope" href="mailto:bcrafton.dev@gmail.com"></a>
+      </div>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/7fe77ffbbc.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/mapdata.js"></script>		
+    <script  type="text/javascript" src="/usmap.js"></script>
+    <script src="/main.js"></script>
+  </body>
+</html>
+

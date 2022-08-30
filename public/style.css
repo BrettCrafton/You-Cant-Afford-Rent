@@ -1,0 +1,225 @@
+html,
+body {
+  height: 100%;
+}
+
+html {
+  font-size: 100%;
+  line-height: 1.4;
+  font-family: Helvetica;
+}
+
+body {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto 2fr;
+  grid-template-areas:
+    "header header header"
+    "map map map"
+    "facts compare stack"
+    "footer footer footer"
+    ;
+  gap: 1rem;
+  margin: 0;
+  padding: 1rem;
+  background-color: #c1c1c9;
+  background-image:url(data:image/svg+xml;base64,CiAgPHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEyMic+CiAgICA8ZGVmcz4KICAgIAk8cGF0dGVybiBwYXR0ZXJuVW5pdHM9J3VzZXJTcGFjZU9uVXNlJyBpZD0nYycgd2lkdGg9JzYxJyBoZWlnaHQ9JzEyMicgeD0nMCcgeT0nMCcgdmlld0JveD0nMCAwIDUgMTAnPgogICAgCQk8cGF0aCBmaWxsLW9wYWNpdHk9JzAnIHN0cm9rZT0nI2Q0ZDRkNCcgc3Ryb2tlLXdpZHRoPScwLjI5JyBkPSdNLTIsMUw3LDEwTS0yLDZMNywxNU0tMiwtNEw3LDUnLz4KICAgIAk8L3BhdHRlcm4+CiAgICAJPHBhdHRlcm4gcGF0dGVyblVuaXRzPSd1c2VyU3BhY2VPblVzZScgaWQ9J2MyJyB3aWR0aD0nNjEnIGhlaWdodD0nMTIyJyB4PScxMDAlJyB5PScwJyB2aWV3Qm94PScwIDAgNSAxMCc+CiAgICAJCTxwYXRoIGZpbGwtb3BhY2l0eT0nMCcgc3Ryb2tlPScjZDRkNGQ0JyBzdHJva2Utd2lkdGg9JzAuMjknIGQ9J003LDFMLTIsMTBNNyw2TC0yLDE1TTcsLTRMLTIsNScvPgogICAgCTwvcGF0dGVybj4KICAgIDwvZGVmcz4KICAgIDxyZWN0IHdpZHRoPSc1MCUnIGhlaWdodD0nMTAwJScgZmlsbD0ndXJsKCNjKScvPgogICAgPHJlY3QgeD0nNTAlJyB3aWR0aD0nNTAlJyBoZWlnaHQ9JzEwMCUnIGZpbGw9J3VybCgjYzIpJy8+CiAgPC9zdmc+CiAg);
+}
+
+#map{
+  width: 50%;
+  margin:auto
+}
+
+
+[data-position="header"] {
+  grid-area: header;
+  text-align: center;
+}
+[data-position="map"] {
+  grid-area: map;
+}
+
+[data-position="facts"] {
+  grid-area: facts;
+}
+
+[data-position="compare"] {
+  grid-area: compare;
+}
+
+[data-position="stack"] {
+  grid-area: stack;
+}
+
+[data-position="footer"] {
+  grid-area: footer;
+}
+
+[data-position] {
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+}
+
+h1,
+h2 {
+  margin: 0;
+}
+h2, h4{
+  text-align: center;
+  padding-bottom: 1%;
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+}
+
+.hidden{
+  display: none;
+}
+
+
+/* Dollar sign fix for input */
+.input-dollar {
+  position: relative;
+}
+.input-dollar.left input {
+  padding-left:18px;
+}
+
+
+.input-dollar:before {
+  position: absolute;
+  top: 0;
+  content:"$";
+}
+.input-dollar.left:before {
+  left: 5px;
+}
+
+/* List styling */
+
+/*** FONTS ***/
+@import url(https://fonts.googleapis.com/css?family=Montserrat:900);
+/*** VARIABLES ***/
+/* Colors */
+/*** EXTEND ***/
+/* box-shadow */
+ol.gradient-list > li::before, ol.gradient-list > li {
+  box-shadow: 0.25rem 0.25rem 0.6rem rgba(0, 0, 0, 0.05), 0 0.5rem 1.125rem rgba(75, 0, 0, 0.05);
+}
+
+/*** STYLE ***/
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family:  sans-serif;
+}
+
+ol.gradient-list {
+  counter-reset: gradient-counter;
+  list-style: none;
+  margin: 1.75rem 0;
+  padding-left: 1rem;
+}
+ol.gradient-list > li {
+  background: white;
+  border-radius: 0 0.5rem 0.5rem 0.5rem;
+  counter-increment: gradient-counter;
+  margin-top: 1rem;
+  min-height: 3rem;
+  padding: 1rem 1rem 1rem 3rem;
+  position: relative;
+}
+ol.gradient-list > li::before, ol.gradient-list > li::after {
+  background: linear-gradient(135deg, #83e4e2 0%, #a2ed56 100%);
+  border-radius: 1rem 1rem 0 1rem;
+  content: "";
+  height: 3rem;
+  left: -1rem;
+  overflow: hidden;
+  position: absolute;
+  top: -1rem;
+  width: 3rem;
+}
+ol.gradient-list > li::before {
+  align-items: flex-end;
+  content: counter(gradient-counter);
+  color: #1d1f20;
+  display: flex;
+  font: 900 1.5em/1 "Montserrat";
+  justify-content: flex-end;
+  padding: 0.125em 0.25em;
+  z-index: 1;
+}
+ol.gradient-list > li:nth-child(10n+1):before {
+  background: linear-gradient(135deg, rgba(162, 237, 86, 0.2) 0%, rgba(253, 220, 50, 0.2) 100%);
+}
+ol.gradient-list > li:nth-child(10n+2):before {
+  background: linear-gradient(135deg, rgba(162, 237, 86, 0.4) 0%, rgba(253, 220, 50, 0.4) 100%);
+}
+ol.gradient-list > li:nth-child(10n+3):before {
+  background: linear-gradient(135deg, rgba(162, 237, 86, 0.6) 0%, rgba(253, 220, 50, 0.6) 100%);
+}
+ol.gradient-list > li:nth-child(10n+4):before {
+  background: linear-gradient(135deg, rgba(162, 237, 86, 0.8) 0%, rgba(253, 220, 50, 0.8) 100%);
+}
+ol.gradient-list > li:nth-child(10n+5):before {
+  background: linear-gradient(135deg, #a2ed56 0%, #fddc32 100%);
+}
+ol.gradient-list > li:nth-child(10n+6):before {
+  background: linear-gradient(135deg, rgba(162, 237, 86, 0.8) 0%, rgba(253, 220, 50, 0.8) 100%);
+}
+ol.gradient-list > li:nth-child(10n+7):before {
+  background: linear-gradient(135deg, rgba(162, 237, 86, 0.6) 0%, rgba(253, 220, 50, 0.6) 100%);
+}
+ol.gradient-list > li:nth-child(10n+8):before {
+  background: linear-gradient(135deg, rgba(162, 237, 86, 0.4) 0%, rgba(253, 220, 50, 0.4) 100%);
+}
+ol.gradient-list > li:nth-child(10n+9):before {
+  background: linear-gradient(135deg, rgba(162, 237, 86, 0.2) 0%, rgba(253, 220, 50, 0.2) 100%);
+}
+ol.gradient-list > li:nth-child(10n+10):before {
+  background: linear-gradient(135deg, rgba(162, 237, 86, 0) 0%, rgba(253, 220, 50, 0) 100%);
+}
+ol.gradient-list > li + li {
+  margin-top: 1.5rem;
+}
+
+
+
+/* Footer Links */
+#footer{
+  display: flex;
+  justify-content: space-between;
+}
+
+.links{
+  padding: 4px;
+  display: flex;
+  justify-content: center;
+}
+
+.links *{
+  color: #a2a2a2;
+  width: fit-content;
+  text-decoration: none;
+  padding: 0 3px 0 3px;
+}
+
+.links a:hover {
+  color: #49bf9d;
+  font-size: 20px;
+}
+
+#disclaimer{
+  font-size: xx-small;
+}
