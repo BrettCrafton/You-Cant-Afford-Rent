@@ -19,8 +19,8 @@ MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
     const db = client.db('stateWages')
     const wagesCollection = db.collection('wages')
 
-        app.listen(3000, function(){
-            console.log('listening on 3000')
+        app.listen(process.env.PORT, function(){
+            console.log(`listening on ${process.env.PORT}`)
         })
         
         app.get('/', (req, res) => {
