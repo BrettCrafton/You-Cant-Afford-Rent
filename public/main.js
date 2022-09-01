@@ -536,13 +536,16 @@ function getData(state){
 
 // "Compare Your Wage" form submission
 const formSubmitted = document.querySelector('#formSubmitted')
-formSubmitted.addEventListener('click', submitClicked)
+const testForm = document.querySelector('#newWagePost')
+
+testForm.addEventListener('submit', submitClicked)
 
 function submitClicked(){
   storageCheck()
   updatelocalStorage()
   compareWage(localStorage.getItem("localWageAmount"), localStorage.getItem("localWageFreq"), localStorage.getItem("localWageState"))
   stackUp()
+  disableButton(formSubmitted)
 }
 
 // "Compare Your Wage" after wage submission
@@ -696,3 +699,18 @@ simplemaps_usmap.hooks.click_state = function(id){
   getData(id)
   formReset()
 }
+
+
+
+//button click disable to stop button smashing or double clicks
+function disableButton(button){
+  // disable button after post occurs
+  window.setTimeout(function() {
+    button.setAttribute("disabled", "disabled");
+  }, 1)
+
+  // Removes disabling after 3 seconds
+  window.setTimeout(function() {
+    button.removeAttribute("disabled");
+  }, 3e3);
+};
