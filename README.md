@@ -2,7 +2,7 @@
 
 An interactive map / Factoid / CRUD database that displays housing / rent / wage information for all 50 states in the United States (2022).
 
-Live Project at: <a href="https://youcantaffordrent.com" target="_blank" rel="noreferrer"> https://youcantaffordrent.com </a>
+Live Project at: <a href="http://youcantaffordrent.com" target="_blank" rel="noreferrer"> http://youcantaffordrent.com </a>
 
 <a href="https://youcantaffordrent.com" target="_blank" rel="noreferrer"> <img src="https://github.com/BrettCrafton/BrettCrafton/blob/main/assets/you%20cant%20afford%20rent%20gif.gif?raw=true" alt="project example"/> </a>
 
