@@ -1,21 +1,3 @@
-//API fetch for state data from API I created and hosted on Heroku
-//new note
-//heroku is disabling free tiers of hosting
-//so instead of using the custom API that I created entirely for this project and hosted there
-//all the object data is loaded below it
-
-// let statesObject 
-
-
-//   fetch(`https://bc-states-api.herokuapp.com/api`)
-//       .then(res => res.json())
-//       .then(data => {
-//           statesObject = data
-//       })
-//       .catch(err => {
-//           console.log(`error ${err}`)
-//       })
-
 let statesObject = [
   {
     "State": "Alabama",
@@ -469,9 +451,6 @@ let statesObject = [
    }
   ]
 
-
-
-
 //event function for non map selection of state
 const stateInput = document.querySelector('#stateInput')
 
@@ -489,8 +468,25 @@ const removeMe = document.querySelector('#removeMe')
 function getData(state){
   //removes hidden class from list
   stateInfo.classList.remove("hidden")
-
   let stateObject = statesObject.find(x => x.abbr == state)
+
+  let wage = stateObject.minWage
+
+  let wageConversion = {
+    Yearly: 2080,
+    Monthly: 173.33,
+    Weekly: 40,
+    Hourly: 1
+  }
+  wageConversion.reduce = function(freq, conversion){
+    return wage / (freq == "yearly" ? this.Yearly : freq == "monthly" ? this.Monthly : freq == "weekly" ? this.Weekly : this.Hourly) * conversion
+  }
+
+  let wageInWeekly = wageConversion.reduce("hourly", wageConversion.Weekly) 
+  let wageInMonthly = wageConversion.reduce("hourly", wageConversion.Monthly) 
+  let wageInYearly = wageConversion.reduce("hourly", wageConversion.Yearly) 
+
+  
   let downpayment = stateObject.avgHouseCost * .2
 
   let workedHours = Math.round(downpayment / stateObject.minWage)
@@ -502,7 +498,8 @@ function getData(state){
   let extraMoney = Math.abs(extraTime * stateObject.minWage)
 
   stateDetails.innerText = `${stateObject.State} - By the Numbers`
-  minimumWage.innerText = `The minimum wage of ${stateObject.State} is ${currency(stateObject.minWage)} an hour.` 
+  minimumWage.innerText = `The minimum wage of ${stateObject.State} is ${currency(stateObject.minWage)} an hour. 
+  (${currency(wageInWeekly)} per week, or ${currency(wageInMonthly)} per month, or ${currency(wageInYearly)} per year)`
   house.innerText = `The average house costs ${currency(stateObject.avgHouseCost)}.`
   houseHours.innerText = `It would take ${workedHours} hours (or ${houseYears} years at 40 hours a week) to save a 20% down payment on minimum wage.`
   rent.innerText = `The average cost to rent is ${currency(stateObject.avgRentZillow)}.`
@@ -515,37 +512,18 @@ function getData(state){
   else{
     removeMe.classList.remove("hidden")
   }
-
-  //add new li element and remove old text if exists, just for fun and relearning appending new elements
-  // const li = document.createElement("li");
-  // if(extraTime >= 0){
-  //   li.innerText = ""
-  //   li.appendChild(document.createTextNode("Sorry, you will never be able to afford a house while paying rent"));
-  //   stateInfo.appendChild(li);
-  // }
-  // else{
-  //   li.innerText = ""
-  //   li.appendChild(document.createTextNode(`It will take ${} years to save for a downpayment while paying rent.`));
-  //   stateInfo.appendChild(li);
-  // }
 }
 
-// Math and formulas
-// move data here for reuse when refactoring code
-
-
 // "Compare Your Wage" form submission
-const formSubmitted = document.querySelector('#formSubmitted')
-const testForm = document.querySelector('#newWagePost')
+// const formSubmitted = document.querySelector('#formSubmitted')
+// formSubmitted.addEventListener('submit', submitClicked)
 
-testForm.addEventListener('submit', submitClicked)
+const newWagePost = document.querySelector('#newWagePost')
+newWagePost.addEventListener('submit', submitClicked)
 
 function submitClicked(){
   storageCheck()
   updatelocalStorage()
-  compareWage(localStorage.getItem("localWageAmount"), localStorage.getItem("localWageFreq"), localStorage.getItem("localWageState"))
-  stackUp()
-  disableButton(formSubmitted)
 }
 
 // "Compare Your Wage" after wage submission
@@ -597,18 +575,36 @@ function compareWage(wage, freq, state ){
  }
 
 
-// "Stack Up" section after wage submission
-function stackUp(){
+//Local Storage
 
+//local storage update on submission
+function updatelocalStorage(){
+  localStorage.setItem("localWageAmount", document.querySelector('#inputAmount').value)
+  localStorage.setItem("localWageFreq", document.querySelector('#selectedFreq').value)
+  localStorage.setItem("localWageState", document.querySelector('#selectedState').value)
 }
 
-function getDatabaseEntiresByState(){
-  
+//local storage check if submitted before
+function storageCheck(){
+  if(localStorage.getItem('hasSubmitted')){
+    console.log("already submitted, deleting previous")
+    deleteDatabaseItem()
+  }
+  else{
+    localStorage.setItem("hasSubmitted", "true")
+  }
 }
 
-function getAllDatabaseEntires(){
-
+//local storage check at page opening and called
+//on startup, if previously used, load "Compare Your Wage" and "The Facts" from localstorage values
+function localStorageStartup(){
+  if(localStorage.getItem('hasSubmitted')){
+    compareWage(localStorage.getItem("localWageAmount"), localStorage.getItem("localWageFreq"), localStorage.getItem("localWageState"))
+    getData(localStorage.getItem("localWageState"))
+  }
 }
+
+localStorageStartup()
 
 //this creates a one database object submission per user functionality 
 //this is a cheeky way of "updating"
@@ -631,33 +627,6 @@ function deleteDatabaseItem(){
           if (res.ok) return res.json()
         })
 }
-
-//local storage update on submission
-function updatelocalStorage(){
-  localStorage.setItem("localWageAmount", document.querySelector('#inputAmount').value)
-  localStorage.setItem("localWageFreq", document.querySelector('#selectedFreq').value)
-  localStorage.setItem("localWageState", document.querySelector('#selectedState').value)
-}
-
-//local storage check if submitted before
-function storageCheck(){
-  if(localStorage.getItem('hasSubmitted')){
-    console.log("already submitted, deleting previous")
-    deleteDatabaseItem()
-  }
-  else{
-    localStorage.setItem("hasSubmitted", "true")
-  }
-}
-
-//local storage check at page opening and called
-function localStorageStartup(){
-  if(localStorage.getItem('hasSubmitted')){
-    compareWage(localStorage.getItem("localWageAmount"), localStorage.getItem("localWageFreq"), localStorage.getItem("localWageState"))
-  }
-}
-
-localStorageStartup()
 
 
 //helper functions
@@ -699,18 +668,3 @@ simplemaps_usmap.hooks.click_state = function(id){
   getData(id)
   formReset()
 }
-
-
-
-//button click disable to stop button smashing or double clicks
-function disableButton(button){
-  // disable button after post occurs
-  window.setTimeout(function() {
-    button.setAttribute("disabled", "disabled");
-  }, 1)
-
-  // Removes disabling after 3 seconds
-  window.setTimeout(function() {
-    button.removeAttribute("disabled");
-  }, 3e3);
-};

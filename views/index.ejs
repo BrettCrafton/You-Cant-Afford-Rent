@@ -160,6 +160,7 @@
             <option value="WI">Wisconsin</option>
             <option value="WY">Wyoming</option>
           </select>
+          <input class="hidden" type="number" name="freqNum" id="freqNum">
           <button id="formSubmitted" type="submit">Submit</button>
         </form>
       </div>
@@ -175,15 +176,56 @@
       </section>
 <!-- Bottom Right -->
       <section data-position="stack">
-        <h2>How You Stack Up</h2>
-        <p>*Coming Soon*</p>
-        <p>Help speed this up by adding your wage to the "Compare Your Wage" form submission.</p>
+         <%
+          function currency(num){
+            return num.toLocaleString('en-US', {
+              style: 'currency',
+              currency: 'USD',
+            })
+          }
 
-        <ol class="stackUp gradient-list hidden">
+          function convert(wage, freq){
+            if(freq == 'yearly'){
+              return wage / 2080
+            }
+            else if(freq == 'monthly'){
+              return wage / 173.33
+            }
+            else if(freq == 'weekly'){
+              return wage / 40
+            }
+            else{
+              return wage
+            }
+          }
+          
+         let nationalAvg = nationalWage.map(x =>  convert(+x.amount, x.frequency) ).reduce((a,c) => a + c, 0) / nationalWage.length 
+         let state = lastState[0].state 
+         let stateArr = nationalWage.filter(x => x.state == state) 
+         let stateAvg = stateArr.map(x=> convert(+x.amount, x.frequency) ).reduce((a,c) => a + +c, 0) / stateArr.length 
+
+         let wageInWeeklyState = stateAvg * 40
+         let wageInMonthlyState = stateAvg * 173.33
+         let wageInYearlyState = stateAvg * 2080
+
+         let wageInWeeklyNational = nationalAvg * 40
+         let wageInMonthlyNational = nationalAvg * 173.33
+         let wageInYearlyNational = nationalAvg * 2080
+
+         console.log(nationalAvg)
+         %>
+
+        <h2>How You Stack Up</h2>
+
+        <ol class="stackUp gradient-list ">
           <h4>By State</h4>
+          <li>The average wage for all submitted users in <%=state%> is: <%= currency(stateAvg) %> per hour, or <%= currency(wageInWeeklyState) %> per week, or <%= currency(wageInMonthlyState) %> per month, or <%= currency(wageInYearlyState) %> per year.</li>
         </ol>
-        <ol class="stackUp gradient-list hidden">
+        <ol class="stackUp gradient-list ">
           <h4>By Nation</h4>
+ 
+          
+          <li>The average wage for all submitted users is: <%= currency(nationalAvg) %> per hour, or <%= currency(wageInWeeklyNational) %> per week, or <%= currency(wageInMonthlyNational) %> per month, or <%= currency(wageInYearlyNational) %> per year.</li>
         </ol>
       </section>
 <!-- Footer -->
