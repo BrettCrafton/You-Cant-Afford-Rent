@@ -27,23 +27,24 @@ In this section, all user submitted data from the MongoDB database is used. Info
 
 ## Optimizations / Add-Ons:
 
-The way it currently is, people can submit multiple times on different devies, or by clearing local storage on their device. Utilizing some type of authentication to stop this behavior would be useful. 
+The way it currently is, people can submit multiple times on different devices, or by clearing local storage on their device. Utilizing some type of authentication to stop this behavior would be useful. 
 
 Refactor code to how I originally wanted and move all the algorithems / formulas I used to their own object. This would allow a "Dryer" code, make reuse of formulas easier, and make code easier to read. 
-
-Fix the responsiveness for smaller viewing devices. At the moment, the lower 3 columns become very difficult to read on a phone. I imagine a tabular setup that displays 1 column at a time. 
 
 Additional section that includes top salary ranking in states. Additional input field for job type (finance, IT, Government etc.).
 
 Clever performance optimization (not desired for my current use, but still cool when I thought about it at scale) would be instead of adding new mongoDB database documents everytime someone submits, have premade database documents for all 50 states + 1 national object. Each state document would have the current running average, as well as the number of submissions for that state to display. This is basic math at this point for calculating new averages to display and would scale phenomenally. Current implementation to find average requires filtering all corresponding state documents, then loading array of wages submitted, summing, and dividing by length. National database document would be similar just for all submissions. With a large database this may get slow. 
 
+Add additional facts/formulas/algorithms in the "How You Stack Up" section.
+
 ## Lessons Learned:
 
-Used CSS grid for the first time, have predominantly used CSS flexbox or floats up to this point. I really liked how easy it is to setup and then make new sections that don't break the existing content flow. It is fairly naturally responsive as well. Only issue is already listed in optimization section about tabular design for columns.
+EJS does not accept nested ternary operators.
+EJS compiles into an intermediary string representation with a lot more cruft including added semicolons. This means you can only start EJS tags where JavaScript would accept a semicolon prefix, and unfortunately, ternary operators break with the way EJS adds the semicolons.
+
+Used CSS grid for the first time, have predominantly used CSS flexbox or floats up to this point. I really liked how easy it is to setup and then make new sections that don't break the existing content flow. It is fairly naturally responsive as well. 
 
 Basic local storage usage in new clever ways, as well as refined API creation technique (:thumbsdown: heroku free teir). 
-
-Relearned apending new child elements to lists while creating the factoid lists (this went unused, but is setup for future additions).
 
 That I should stop forgetting to restart my node server after making backend changes.
 
