@@ -1,3 +1,5 @@
+disableButton(document.querySelector('#formSubmitted'))
+
 let statesObject = [
   {
     "State": "Alabama",
@@ -668,3 +670,13 @@ simplemaps_usmap.hooks.click_state = function(id){
   getData(id)
   formReset()
 }
+
+//button click disable to stop button smashing or double clicks
+function disableButton(button){
+    button.setAttribute("disabled", "disabled");
+
+  // Removes disabling after 3 seconds
+  window.setTimeout(function() {
+    button.removeAttribute("disabled");
+  }, 3e3);
+};
