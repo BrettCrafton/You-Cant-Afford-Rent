@@ -48,6 +48,8 @@ Basic local storage usage in new clever ways, as well as refined API creation te
 
 That I should stop forgetting to restart my node server after making backend changes.
 
+Stopping users from trying (or accidentally) to break your app is conceptually easy, but implementation is difficult to weed out edge cases
+
 ## APP Use:
 
 This is pretty straight forward on the site design. Hover on map to get basic info. Click state on map or use state selector in "The Facts" section to get facts about that state.
