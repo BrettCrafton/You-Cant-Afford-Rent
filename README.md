@@ -23,7 +23,7 @@ Data is then used to compare against minimum wage and other relevent info of the
 Inputs in this section keep a 1 input per user rule via local storage checks. If data is already stored in local storage on additional submissions, then database data gets deleted, and new info posted to database. Also on load of page, if local storage contains previous submissions, then data will autoload from local storage info.
 
 **"How You Stack Up"**  
-In this section, all user submitted data from the MongoDB database is used. Info is loaded on wage submission of the form in "Compare Your Wage". Using get methods from MongoDB, all data is used in the National facts section and only the submitted state data is used in the state section.
+In this section, all user submitted data from the MongoDB database is used. Using get methods from MongoDB, all data is used in the National facts section and only the submitted state data is used in the state section.
 
 ## Optimizations / Add-Ons:
 
@@ -47,6 +47,8 @@ Used CSS grid for the first time, have predominantly used CSS flexbox or floats 
 Basic local storage usage in new clever ways, as well as refined API creation technique (:thumbsdown: heroku free teir). 
 
 That I should stop forgetting to restart my node server after making backend changes.
+
+Stopping users from trying (or accidentally) to break your app is conceptually easy, but implementation is difficult to weed out edge cases
 
 ## APP Use:
 
