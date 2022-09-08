@@ -44,7 +44,7 @@ let statesObject = [
     "avgHouseCost": 788679,
     "medianRentACS": 1503,
     "avgRentZillow": 3000,
-    "minWage": 12
+    "minWage": 14
    },
    {
     "State": "Colorado",
@@ -80,7 +80,7 @@ let statesObject = [
     "avgHouseCost": 402837,
     "medianRentACS": 1175,
     "avgRentZillow": 2575,
-    "minWage": 8.46
+    "minWage": 11.00
    },
    {
     "State": "Georgia",

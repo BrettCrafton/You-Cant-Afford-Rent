@@ -81,13 +81,13 @@ var simplemaps_usmap_mapdata={
       color: "#007ecc",
       name: "Alaska",
       zoomable: "no",
-      description: "Minimum Wage : $ 9.89 <br>Average House Price : $ 328,819.00 <br>Average Rent Price : $ 1,489.00 "
+      description: "Minimum Wage : $ 9.89 <br>Average House Price : $ 328,819.00 <br>Average Rent Price : $ 1,489.00"
     },
     FL: {
       color: "#009dff",
       name: "Florida",
       zoomable: "no",
-      description: "Minimum Wage : $ 8.46 <br>Average House Price : $ 402,837.00 <br>Average Rent Price : $ 2,575.00 "
+      description: "Minimum Wage : $ 11.00 <br>Average House Price : $ 402,837.00 <br>Average Rent Price : $ 2,575.00"
     },
     NH: {
       color: "#009dff",
@@ -362,7 +362,7 @@ var simplemaps_usmap_mapdata={
       color: "#005e99",
       name: "California",
       zoomable: "no",
-      description: "Minimum Wage : $ 12.00 <br>Average House Price : $ 788,679.00 <br>Average Rent Price : $ 3,000.00 "
+      description: "Minimum Wage : $ 14.00 <br>Average House Price : $ 788,679.00 <br>Average Rent Price : $ 3,000.00"
     },
     MI: {
       color: "#007ecc",
