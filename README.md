@@ -17,7 +17,7 @@ Live Project at: <a href="http://youcantaffordrent.com" target="_blank" rel="nor
 Built map with https://simplemaps.com/. Some basic data I built into the map and presents on hover. Clicking on map, initiates data inserted into the "The Facts" list. This function is also able to be initiated from the selector input under "The Facts" section. 
 
 **"Compare Your Wage"**  
-Form input in this section on submission do 2 things. 1. Send the data via post method to MongoDB database for storage and usage within the "How You Stack Up" section. 2. Store the data in local storage for callback on revisit of the site and use within this section.
+Form input in this section on submission does 2 things. 1. Send the data via post method to MongoDB database for storage and usage within the "How You Stack Up" section. 2. Store the data in local storage for callback on revisit of the site and use within this section.
 Data is then used to compare against minimum wage and other relevent info of the submitted state.
 
 Inputs in this section keep a 1 input per user rule via local storage checks. If data is already stored in local storage on additional submissions, then database data gets deleted, and new info posted to database. Also on load of page, if local storage contains previous submissions, then data will autoload from local storage info.
