@@ -13,8 +13,11 @@ Live Project at: <a href="http://youcantaffordrent.com" target="_blank" rel="nor
 ~~Utilized the API I created from scratch, specifically for this project, hosted at https://bc-states-api.herokuapp.com/.~~  
 **Update** - due to Heroku discontinuing their free tier, the json data obtained from the API is now built into the app. This was an easy conversion seeing how I built the API.
 
-**"The Facts"**  
-Built map with https://simplemaps.com/. Some basic data I built into the map and presents on hover. Clicking on map, initiates data inserted into the "The Facts" list. This function is also able to be initiated from the selector input under "The Facts" section. 
+**The Map**
+Built map with https://simplemaps.com/. Some basic data I built into the map and presents on hover. Clicking on map, initiates data inserted into the "The Facts" list. This function is also able to be initiated from the selector input under "The Facts" section for screen readers. 
+
+**"The Facts"** 
+Large amounts of math done in this section (across the board really). Wage conversion object and method created to produce the different versions of salary. Pre-load of this section is done utilizing prior form submission in local storage.
 
 **"Compare Your Wage"**  
 Form input in this section on submission does 2 things. 1. Send the data via post method to MongoDB database for storage and usage within the "How You Stack Up" section. 2. Store the data in local storage for callback on revisit of the site and use within this section.
