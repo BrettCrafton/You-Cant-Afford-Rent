@@ -13,10 +13,10 @@ Live Project at: <a href="https://you-cant-afford-rent.herokuapp.com/" target="_
 ~~Utilized the API I created from scratch, specifically for this project, hosted at https://bc-states-api.herokuapp.com/.~~  
 **Update** - due to Heroku discontinuing their free tier, the json data obtained from the API is now built into the app. This was an easy conversion seeing how I built the API.
 
-**The Map**
+**The Map**  
 Built map with https://simplemaps.com/. Some basic data I built into the map and presents on hover. Clicking on map, initiates data inserted into the "The Facts" list. This function is also able to be initiated from the selector input under "The Facts" section for screen readers. 
 
-**"The Facts"** 
+**"The Facts"**  
 Large amounts of math done in this section (across the board really). Wage conversion object and method created to produce the different versions of salary. Pre-load of this section is done utilizing prior form submission in local storage.
 
 **"Compare Your Wage"**  
