@@ -1,9 +1,7 @@
 const express = require('express')
 const app = express()
-const bodyParser = require('body-parser')
 const MongoClient = require('mongodb').MongoClient
 const dotenv = require('dotenv')
-const { response } = require('express')
 
 // LOAD CONFIG
 dotenv.config({path: './config/config.env'})
@@ -12,20 +10,6 @@ app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
-
-function wageToHourly(freq, conversion){
-  let wageConversion = {
-  Yearly: 2080,
-  Monthly: 173.33,
-  Weekly: 40,
-  Hourly: 1
-}
-wageConversion.reduce = function(freq, conversion){
-  return wage / (freq == "yearly" ? this.Yearly : freq == "monthly" ? this.Monthly : freq == "weekly" ? this.Weekly : this.Hourly) * conversion
-}
-
-  return wageConversion.reduce(freq, wageConversion.Hourly) 
-}
 
 MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
     .then(client => {

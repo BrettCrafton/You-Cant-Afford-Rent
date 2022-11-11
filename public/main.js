@@ -451,17 +451,16 @@ let statesObject = [
     "avgRentZillow": 1100,
     "minWage": 7.25
    }
-  ]
+]
 
 //event function for non map selection of state
 const stateInput = document.querySelector('#stateInput')
 
 stateInput.addEventListener('change', selectedInput)
+
 function selectedInput(event){
   getData(event.target.value)
 }
-
-
 
 //"The Facts" function that brings data up after map click event, or drop down box is used 
 const stateInfo = document.querySelector('.stateInfo')
@@ -487,16 +486,11 @@ function getData(state){
   let wageInWeekly = wageConversion.reduce("hourly", wageConversion.Weekly) 
   let wageInMonthly = wageConversion.reduce("hourly", wageConversion.Monthly) 
   let wageInYearly = wageConversion.reduce("hourly", wageConversion.Yearly) 
-
-  
   let downpayment = stateObject.avgHouseCost * .2
-
   let workedHours = Math.round(downpayment / stateObject.minWage)
   let houseYears = (workedHours / 2080).toFixed(2)
-
   let rentTime = stateObject.avgRentZillow / stateObject.minWage
   let extraTime = (rentTime - 173.8).toFixed(2)
-
   let extraMoney = Math.abs(extraTime * stateObject.minWage)
 
   stateDetails.innerText = `${stateObject.State} - By the Numbers`
@@ -517,9 +511,6 @@ function getData(state){
 }
 
 // "Compare Your Wage" form submission
-// const formSubmitted = document.querySelector('#formSubmitted')
-// formSubmitted.addEventListener('submit', submitClicked)
-
 const newWagePost = document.querySelector('#newWagePost')
 newWagePost.addEventListener('submit', submitClicked)
 
@@ -552,19 +543,13 @@ function compareWage(wage, freq, state ){
   let wageInWeekly = wageConversion.reduce(freq, wageConversion.Weekly) 
   let wageInMonthly = wageConversion.reduce(freq, wageConversion.Monthly) 
   let wageInYearly = wageConversion.reduce(freq, wageConversion.Yearly) 
-
   let wageRatio =  wageInHourly / stateObject.minWage
-
   let downpayment = stateObject.avgHouseCost * .2
-
   let workedHours = Math.round(downpayment / wageInHourly)
   let houseYears = (workedHours / 2080).toFixed(2)
-
   let fasterTime = Math.abs(houseYears - ((Math.round(downpayment / stateObject.minWage)) / 2080)).toFixed(2)
-
   let rentTime = stateObject.avgRentZillow / wageInHourly
   let extraTime = (rentTime - 173.8).toFixed(2)
-
   let extraMoney = Math.abs(extraTime * wageInHourly)
 
   wageDetails.innerText = `Wage of ${currency(+wage)} per ${freq.slice(0, freq.length -2)} in ${stateName} `
@@ -574,8 +559,7 @@ function compareWage(wage, freq, state ){
   fasterHours.innerText = `You will save for a house down payment ${fasterTime} years faster than a minimum wage earner.`
   yourRentHours.innerText = `It will take you ${rentTime.toFixed(2)} hours worked a month to pay (average) rent at your wage. ` + ( extraTime > 0 ? `This is ${extraTime} hours more than you work in a month (at 40 hours a week). You would need ${currency(extraMoney)} extra to afford (average) rent every month.` : `Congratulations! You can pay rent. You have ${currency(extraMoney)} left for everything else every month.` ) 
   yourDownPaymentHours.innerText = extraTime >= 0 ? "Sorry, you will never be able to afford a house while paying rent" : `It will take ${(downpayment / extraMoney / 12).toFixed(2) } years to save for a 20% house down payment while paying rent and saving all your extra money above.`
- }
-
+}
 
 //Local Storage
 
@@ -649,9 +633,9 @@ function formReset(){
 }
 
 //stop invalid key presses in number input field
-var inputBox = document.getElementById("inputAmount");
+let inputBox = document.getElementById("inputAmount");
 
-var invalidChars = [
+let invalidChars = [
   "-",
   "+",
   "e",
