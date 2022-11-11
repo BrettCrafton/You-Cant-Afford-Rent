@@ -2,9 +2,9 @@
 
 An interactive map / Factoid / CRUD database that displays housing / rent / wage information for all 50 states in the United States (2022).
 
-Live Project at: <a href="http://youcantaffordrent.com" target="_blank" rel="noreferrer"> http://youcantaffordrent.com </a>
+Live Project at: <a href="https://you-cant-afford-rent.herokuapp.com/" target="_blank" rel="noreferrer"> https://you-cant-afford-rent.herokuapp.com/ </a>
 
-<a href="https://youcantaffordrent.com" target="_blank" rel="noreferrer"> <img src="https://github.com/BrettCrafton/BrettCrafton/blob/main/assets/you%20cant%20afford%20rent%20gif.gif?raw=true" alt="project example"/> </a>
+<a href="https://you-cant-afford-rent.herokuapp.com/" target="_blank" rel="noreferrer"> <img src="https://github.com/BrettCrafton/BrettCrafton/blob/main/assets/you%20cant%20afford%20rent%20gif.gif?raw=true" alt="project example"/> </a>
 
 ## How It's Made:
 
@@ -13,11 +13,14 @@ Live Project at: <a href="http://youcantaffordrent.com" target="_blank" rel="nor
 ~~Utilized the API I created from scratch, specifically for this project, hosted at https://bc-states-api.herokuapp.com/.~~  
 **Update** - due to Heroku discontinuing their free tier, the json data obtained from the API is now built into the app. This was an easy conversion seeing how I built the API.
 
+**The Map**  
+Built map with https://simplemaps.com/. Some basic data I built into the map and presents on hover. Clicking on map, initiates data inserted into the "The Facts" list. This function is also able to be initiated from the selector input under "The Facts" section for screen readers. 
+
 **"The Facts"**  
-Built map with https://simplemaps.com/. Some basic data I built into the map and presents on hover. Clicking on map, initiates data inserted into the "The Facts" list. This function is also able to be initiated from the selector input under "The Facts" section. 
+Large amounts of math done in this section (across the board really). Wage conversion object and method created to produce the different versions of salary. Pre-load of this section is done utilizing prior form submission in local storage.
 
 **"Compare Your Wage"**  
-Form input in this section on submission do 2 things. 1. Send the data via post method to MongoDB database for storage and usage within the "How You Stack Up" section. 2. Store the data in local storage for callback on revisit of the site and use within this section.
+Form input in this section on submission does 2 things. 1. Send the data via post method to MongoDB database for storage and usage within the "How You Stack Up" section. 2. Store the data in local storage for callback on revisit of the site and use within this section.
 Data is then used to compare against minimum wage and other relevent info of the submitted state.
 
 Inputs in this section keep a 1 input per user rule via local storage checks. If data is already stored in local storage on additional submissions, then database data gets deleted, and new info posted to database. Also on load of page, if local storage contains previous submissions, then data will autoload from local storage info.
@@ -33,7 +36,7 @@ Refactor code to how I originally wanted and move all the algorithems / formulas
 
 Additional section that includes top salary ranking in states. Additional input field for job type (finance, IT, Government etc.).
 
-Clever performance optimization (not desired for my current use, but still cool when I thought about it at scale) would be instead of adding new mongoDB database documents everytime someone submits, have premade database documents for all 50 states + 1 national object. Each state document would have the current running average, as well as the number of submissions for that state to display. This is basic math at this point for calculating new averages to display and would scale phenomenally. Current implementation to find average requires filtering all corresponding state documents, then loading array of wages submitted, summing, and dividing by length. National database document would be similar just for all submissions. With a large database this may get slow. 
+Clever performance optimization (not desired for my current use, but still cool when I thought about it at scale) would be instead of adding new mongoDB database documents everytime someone submits, have premade database documents for all 50 states + 1 national object. Each state document would have the current running average, as well as the number of submissions for that state to display. This is basic math at this point for calculating new averages to display and would scale phenomenally. Current implementation to find average requires filtering all corresponding state documents, then loading array of wages submitted, summing, and dividing by length. National database document would be similar just for all submissions. With a large database this may get slow (current performance improvement could be to use Mongoose and apply the .lean() method to reduce MongoDB's document response payload). 
 
 Add additional facts/formulas/algorithms in the "How You Stack Up" section.
 
@@ -57,6 +60,9 @@ This is pretty straight forward on the site design. Hover on map to get basic in
 Submit your wage in the "Compare Your Wage" section to get comparisons of your wage to state minimum wage as well as load the "How You Stack Up" section with relevent facts.
 
 ## Other Projects:
+
+**Lost But Found:** https://github.com/BrettCrafton/lost-but-found
+<a href="https://bc-lost-but-found.herokuapp.com/success-stories" target="_blank" rel="noreferrer"> <img src="https://github.com/BrettCrafton/BrettCrafton/blob/main/assets/lost-but-found-small.gif?raw=true" alt="project example"/> </a>
 
 **Magical World of Harry Potter:** https://github.com/BrettCrafton/Magical-World-of-Harry-Potter
 <a href="https://brettcrafton.com/Portfolio/Harry%20Potter/index.html" target="_blank" rel="noreferrer"> <img src="https://github.com/BrettCrafton/BrettCrafton/blob/main/assets/Harry%20Potter%20gif.gif?raw=true" alt="project example"/> </a>
